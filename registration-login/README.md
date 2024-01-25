@@ -1,6 +1,6 @@
 # Spring Boot User Registration and Login Example Tutorial
 
-(参考资料)[https://www.javaguides.net/2018/10/user-registration-module-using-springboot-springmvc-springsecurity-hibernate5-thymeleaf-mysql.html]
+[参考资料](https://www.javaguides.net/2018/10/user-registration-module-using-springboot-springmvc-springsecurity-hibernate5-thymeleaf-mysql.html)
 
 ## 技术栈
 
