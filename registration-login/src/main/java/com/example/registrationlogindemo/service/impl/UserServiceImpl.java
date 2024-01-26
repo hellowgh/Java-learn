@@ -9,7 +9,6 @@ import com.example.registrationlogindemo.service.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -37,7 +36,7 @@ public class UserServiceImpl implements UserService {
 
         user.setName(userDto.getFirstName() + " " + userDto.getLastName());
         user.setEmail(userDto.getEmail());
-        user.setPassword(userDto.getPassword());
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
 
         Role role = roleRepository.findByName("ROLE_ADMIN");
 
@@ -49,12 +48,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUserByEmail(String email) {
+    public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
     @Override
-    public List<UserDto> findAllUser() {
+    public List<UserDto> findAllUsers() {
         List<User> users = userRepository.findAll();
 
         return users.stream()
