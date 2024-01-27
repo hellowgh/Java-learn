@@ -22,6 +22,7 @@ public class Role {
     @Column(nullable = false, unique = true)
     private String name;
 
+    // 反向关联。表示User和Role的多对多关系由User方来维护关系
     @ManyToMany(mappedBy = "roles")
     private List<User> users;
 }

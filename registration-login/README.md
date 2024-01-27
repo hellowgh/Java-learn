@@ -17,3 +17,7 @@ We validate the user registration fields with Java bean validation annotations w
 
 Basically, we will develop a simple User Registration Module using Role-based Spring Security which can use in any
 spring MVC-based project.
+
+## 数据库结构
+
+![img.png](img.png)
