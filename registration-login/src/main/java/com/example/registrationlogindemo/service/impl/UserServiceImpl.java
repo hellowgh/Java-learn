@@ -3,6 +3,7 @@ package com.example.registrationlogindemo.service.impl;
 import com.example.registrationlogindemo.dto.UserDto;
 import com.example.registrationlogindemo.entity.Role;
 import com.example.registrationlogindemo.entity.User;
+import com.example.registrationlogindemo.enums.RoleEnum;
 import com.example.registrationlogindemo.repository.RoleRepository;
 import com.example.registrationlogindemo.repository.UserRepository;
 import com.example.registrationlogindemo.service.UserService;
@@ -38,7 +39,7 @@ public class UserServiceImpl implements UserService {
         user.setEmail(userDto.getEmail());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
 
-        Role role = roleRepository.findByName("ROLE_ADMIN");
+        Role role = roleRepository.findByName(RoleEnum.ROLE_ADMIN.toString());
 
         if (role == null) {
             role = checkRoleExist();
@@ -59,11 +60,11 @@ public class UserServiceImpl implements UserService {
         List<User> users = userRepository.findAll();
 
         return users.stream()
-                .map(this::mapToUserDto)
+                .map(this::convertEntityToDto)
                 .toList();
     }
 
-    private UserDto mapToUserDto(User user) {
+    private UserDto convertEntityToDto(User user) {
         UserDto userDto = new UserDto();
 
         String[] str = user.getName().split(" ");
@@ -76,7 +77,7 @@ public class UserServiceImpl implements UserService {
 
     private Role checkRoleExist() {
         Role role = new Role();
-        role.setName("ROLE_ADMIN");
+        role.setName(String.valueOf(RoleEnum.ROLE_ADMIN));
         return roleRepository.save(role);
     }
 }
