@@ -20,4 +20,4 @@ spring MVC-based project.
 
 ## 数据库结构
 
-![img.png](img.png)
+![img.png](src/main/resources/imgs/img.png)

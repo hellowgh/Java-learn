@@ -16,21 +16,33 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SpringSecurity {
 
+    /**
+     * this is a bean representing the user details service. it's used to load user-specific data during authentication.
+     */
     @Autowired
     private UserDetailsService userDetailsService;
 
     @Bean
     public static PasswordEncoder passwordEncoder() {
+        // BCryptPasswordEncoder: a secure and popular password hashing algorithm.
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     * this method create a SecurityFilterChain bean to configure the security settings.
+     * it disables CSRF protection, authorize all HTTP request to be authenticated, and sets up HTTP Basic authentication.
+     *
+     * @param http
+     * @return
+     * @throws Exception
+     */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests((authorize) ->
-                        authorize.requestMatchers("/register/**").permitAll()
+                        authorize.requestMatchers("/register/**").permitAll() // requests to 'register' are permitted for all
                                 .requestMatchers("/index").permitAll()
-                                .requestMatchers("/users").hasRole("ADMIN")
+                                .requestMatchers("/users").hasRole("ADMIN") // require the ADMIN role
                 ).formLogin(
                         form -> form
                                 .loginPage("/login")
@@ -45,6 +57,13 @@ public class SpringSecurity {
         return http.build();
     }
 
+    /**
+     * this method configures the global authentication manager.It specifies the user details service and
+     * password encoder to be used during authentication.
+     *
+     * @param auth
+     * @throws Exception
+     */
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
