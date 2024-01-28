@@ -26,7 +26,6 @@ public interface DeptService {
 
     /**
      * update dept by id
-     * @param id
      * @param dept
      */
     void update(Dept dept);
