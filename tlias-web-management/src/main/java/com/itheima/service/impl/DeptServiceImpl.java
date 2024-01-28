@@ -14,8 +14,14 @@ public class DeptServiceImpl implements DeptService  {
     @Autowired
     private DeptMapper deptMapper;
 
+    @Override
     public List<Dept> list() {
         return deptMapper.list();
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        deptMapper.deleteById(id);
     }
 
 }
