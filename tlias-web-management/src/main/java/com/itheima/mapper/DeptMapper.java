@@ -1,8 +1,10 @@
 package com.itheima.mapper;
 
 import com.itheima.pojo.Dept;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -18,7 +20,9 @@ public interface DeptMapper {
     @Select("DELETE FROM dept WHERE id = #{id}")
     void deleteById(Integer id);
 
-    @Select("INSERT INTO dept (name, create_time, update_time) values (#{name}, #{createTime}, #{updateTime})")
+    @Delete("INSERT INTO dept (name, create_time, update_time) values (#{name}, #{createTime}, #{updateTime})")
     void insert(Dept dept);
 
+    @Update("UPDATE dept SET name = #{name}, create_time = #{createTime}, update_time = #{updateTime} WHERE id = #{id}")
+    void update(Dept dept);
 }

@@ -43,4 +43,15 @@ public class DeptController {
 
         return Result.success();
     }
+
+    @PutMapping
+    public Result update(@RequestBody Dept dept) {
+        Integer id = dept.getId();
+
+        log.info("update dept {}", id);
+
+        deptService.update(dept);
+
+        return Result.success();
+    }
 }
