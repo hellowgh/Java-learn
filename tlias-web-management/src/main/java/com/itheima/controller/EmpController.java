@@ -25,8 +25,8 @@ public class EmpController {
     private EmpService empService;
 
     @GetMapping
-    public Result page(@RequestParam(defaultValue = "1") Long page,
-                       @RequestParam(defaultValue = "10") Long pageSize) {
+    public Result page(@RequestParam(defaultValue = "1") Integer page,
+                       @RequestParam(defaultValue = "10") Integer pageSize) {
         log.info("分页查询，参数：{}, {}", page, pageSize);
 
         PageBean pageBean = empService.page(page, pageSize);

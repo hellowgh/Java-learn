@@ -7,8 +7,6 @@ import java.util.List;
 
 public interface EmpService {
 
-    public Long total();
-
-    public PageBean page(Long page, Long pageSize);
+    PageBean page(Integer page, Integer pageSize);
 
 }
