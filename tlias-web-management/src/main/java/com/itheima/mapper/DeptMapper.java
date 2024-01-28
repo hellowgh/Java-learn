@@ -17,4 +17,8 @@ public interface DeptMapper {
 
     @Select("DELETE FROM dept WHERE id = #{id}")
     void deleteById(Integer id);
+
+    @Select("INSERT INTO dept (name, create_time, update_time) values (#{name}, #{createTime}, #{updateTime})")
+    void insert(Dept dept);
+
 }
