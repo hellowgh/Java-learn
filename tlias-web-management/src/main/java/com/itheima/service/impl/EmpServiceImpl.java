@@ -30,4 +30,9 @@ public class EmpServiceImpl implements EmpService {
         // 3. 封装PageBean对象
         return new PageBean(p.getTotal(), p.getResult());
     }
+
+    @Override
+    public void remove(List<Integer> ids) {
+        empMapper.remove(ids);
+    }
 }

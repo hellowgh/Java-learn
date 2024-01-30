@@ -7,10 +7,7 @@ import com.itheima.service.EmpService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -39,6 +36,15 @@ public class EmpController {
         PageBean pageBean = empService.page(page, pageSize, name, gender, begin, end);
 
         return Result.success(pageBean);
+    }
+
+    @DeleteMapping("/{ids}")
+    public Result remove(@PathVariable List<Integer> ids) {
+        log.info("删除员工，id是：{}", ids);
+
+        empService.remove(ids);
+
+        return Result.success();
     }
 
 }

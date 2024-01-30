@@ -3,10 +3,25 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.itheima.mapper.EmpMapper">
+    <!--批量删除-->
+    <select id="remove">
+        delete from emp where id in
+        <!--
+            collection: 要遍历的集合
+            item：每项的名字，可自定义
+            separator：分隔符
+            open：遍历前拼接什么
+            close：遍历后拼接什么
+
+        -->
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </select>
+
     <!--条件查询-->
     <select id="list" resultType="com.itheima.pojo.Emp">
-        select *
-        from emp
+        select * from emp
         <where>
             <if test="name != null and name != ''">
                 name like concat('%',#{name},'%')
