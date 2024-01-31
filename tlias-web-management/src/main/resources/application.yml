@@ -1,0 +1,25 @@
+spring:
+  # 数据库
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/tlias
+    username: root
+    password: root
+  # 文件上传
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+
+# 输入log-iml即可匹配出
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+# 模拟阿里云配置
+aliyun:
+  oss:
+    bucketName: bucketName
+    accessKeyId: accessKeyId
+    accessKetSecret: accessKetSecret
