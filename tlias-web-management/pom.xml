@@ -65,6 +65,12 @@
 			<artifactId>pagehelper-spring-boot-starter</artifactId>
 			<version>1.4.2</version>
 		</dependency>
+
+<!--		可选配置，添加后，再没application.yml文件中能够更好地提示自定义配置-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

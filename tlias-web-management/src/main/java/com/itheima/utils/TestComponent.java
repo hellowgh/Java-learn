@@ -1,18 +1,21 @@
 package com.itheima.utils;
 
-import org.springframework.beans.factory.annotation.Value;
+import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+/**
+ * 工具类
+ */
 @Component
+@Data
+@ConfigurationProperties(prefix = "aliyun.oss")
 public class TestComponent {
 
-    @Value("${aliyun.oss.bucketName}")
     private String bucketName;
 
-    @Value("${aliyun.oss.accessKeyId}")
     private String accessKeyId;
 
-    @Value("${aliyun.oss.accessKetSecret}")
     private String accessKetSecret;
 
     public void test() {
