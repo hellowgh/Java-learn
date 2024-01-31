@@ -4,6 +4,7 @@ import com.itheima.pojo.Emp;
 import com.itheima.pojo.PageBean;
 import com.itheima.pojo.Result;
 import com.itheima.service.EmpService;
+import com.itheima.utils.TestComponent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -23,6 +24,9 @@ public class EmpController {
 
     @Autowired
     private EmpService empService;
+
+    @Autowired
+    private TestComponent testComponent;
 
     @GetMapping
     public Result page(@RequestParam(defaultValue = "1") Integer page,
@@ -77,6 +81,13 @@ public class EmpController {
         log.info("update by id: {}", id);
 
         empService.update(emp);
+
+        return Result.success();
+    }
+
+    @GetMapping("/test")
+    public Result test() {
+        testComponent.test();
 
         return Result.success();
     }
