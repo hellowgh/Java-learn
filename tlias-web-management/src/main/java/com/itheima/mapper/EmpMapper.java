@@ -23,4 +23,14 @@ public interface EmpMapper {
     Emp findById(Integer id);
 
     void update(Emp emp);
+
+
+    // mistake 这里犯过一个小错误，将sql语句的and写成了&
+    /**
+     * 根据用户名和密码查询用户
+     * @param emp
+     * @return
+     */
+    @Select("select * from emp where username = #{username} and password = #{password}")
+    Emp findByUsernameAndPassword(Emp emp);
 }
