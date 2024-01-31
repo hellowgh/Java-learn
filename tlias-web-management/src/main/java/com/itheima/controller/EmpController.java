@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * 分页查询结果的封装类
@@ -55,6 +56,21 @@ public class EmpController {
         empService.save(emp);
 
         return Result.success();
+
+    }
+
+    @GetMapping("/{id}")
+    public Result findById(@PathVariable Integer id) {
+
+        log.info("find employee by id: {}", id);
+
+        Emp emp = empService.findById(id);
+
+        if (Objects.isNull(emp)) {
+            return Result.error("not exist");
+        }
+
+        return Result.success(emp);
 
     }
 
