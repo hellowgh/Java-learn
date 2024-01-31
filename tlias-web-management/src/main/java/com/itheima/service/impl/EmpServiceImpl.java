@@ -49,4 +49,11 @@ public class EmpServiceImpl implements EmpService {
     public Emp findById(Integer id) {
         return empMapper.findById(id);
     }
+
+    @Override
+    public void update(Emp emp) {
+        emp.setUpdateTime(LocalDate.from(LocalDateTime.now()));
+
+        empMapper.update(emp);
+    }
 }

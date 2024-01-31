@@ -15,4 +15,6 @@ public interface EmpService {
     void save(Emp emp);
 
     Emp findById(Integer id);
+
+    void update(Emp emp);
 }

@@ -50,18 +50,15 @@ public class EmpController {
 
     @PostMapping
     public Result save(@RequestBody Emp emp) {
-
         log.info("新增员工，emp：{}", emp);
 
         empService.save(emp);
 
         return Result.success();
-
     }
 
     @GetMapping("/{id}")
     public Result findById(@PathVariable Integer id) {
-
         log.info("find employee by id: {}", id);
 
         Emp emp = empService.findById(id);
@@ -71,7 +68,17 @@ public class EmpController {
         }
 
         return Result.success(emp);
+    }
 
+    @PutMapping
+    public Result update(@RequestBody Emp emp) {
+        Integer id = emp.getId();
+
+        log.info("update by id: {}", id);
+
+        empService.update(emp);
+
+        return Result.success();
     }
 
 }
