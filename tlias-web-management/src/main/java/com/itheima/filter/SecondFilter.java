@@ -13,10 +13,10 @@ import java.io.IOException;
 public class SecondFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        System.out.println("第二个Filter拦截...");
+//        System.out.println("第二个Filter拦截...");
 
         filterChain.doFilter(servletRequest, servletResponse);
 
-        System.out.println("第二个Filter放行后...");
+//        System.out.println("第二个Filter放行后...");
     }
 }
