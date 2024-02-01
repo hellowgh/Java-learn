@@ -2,12 +2,16 @@
 
 ## 功能
 - 登录
+- 请求过滤、拦截
 - CURD
+- 全局异常处理
 - 文件上传
 
 ## 技术栈
 - Spring boot
 - Mybatis
+- Filter
+- Interceptor
 - MySQL事务
 - JWT
 
