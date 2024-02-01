@@ -66,11 +66,26 @@
 			<version>1.4.2</version>
 		</dependency>
 
-<!--		可选配置，添加后，再没application.yml文件中能够更好地提示自定义配置-->
+		<!--可选配置，添加后，再没application.yml文件中能够更好地提示自定义配置-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-configuration-processor</artifactId>
 		</dependency>
+
+		<!--JWT令牌-->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+
+		<!--此依赖源于GPT建议：解决JDK9以上生成JWT时的报错-->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
