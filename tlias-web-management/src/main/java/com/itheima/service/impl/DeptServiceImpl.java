@@ -3,6 +3,8 @@ package com.itheima.service.impl;
 import com.itheima.mapper.DeptMapper;
 import com.itheima.mapper.EmpMapper;
 import com.itheima.pojo.Dept;
+import com.itheima.pojo.DeptLog;
+import com.itheima.service.DeptLogService;
 import com.itheima.service.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,21 +22,33 @@ public class DeptServiceImpl implements DeptService  {
     @Autowired
     private EmpMapper empMapper;
 
+    @Autowired
+    private DeptLogService deptLogService;
+
     @Override
     public List<Dept> list() {
         return deptMapper.list();
     }
 
-    @Transactional // 开启 spring 事务管理
+    @Transactional(rollbackFor = Exception.class) // 开启 spring 事务管理；所有异常都回滚（默认是运行时异常才回滚）
     @Override
     public void deleteById(Integer id) {
-        deptMapper.deleteById(id);
+        try {
+            deptMapper.deleteById(id);
 
-        // 制造异常，查看事务回滚是否正常
-        // int i = 2 / 0;
+            // 制造异常，查看事务回滚是否正常
+             int i = 2 / 0;
 
-        // 删除部门员工
-        empMapper.removeEmpsByDeptId(id);
+            // 删除部门员工
+            empMapper.removeEmpsByDeptId(id);
+        } finally {
+            // 无论事务回滚与否，都要添加操作日志
+            DeptLog deptLog = new DeptLog();
+            deptLog.setCreateTime(LocalDateTime.now());
+            deptLog.setDescription("执行了解散部门操作，此次解散的部门id是：" + id);
+
+            deptLogService.insert(deptLog);
+        }
     }
 
     @Override
