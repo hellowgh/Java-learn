@@ -23,3 +23,8 @@ aliyun:
     bucketName: bucketName
     accessKeyId: accessKeyId
     accessKetSecret: accessKetSecret
+
+# spring 事务管理日志 (回滚日志：Initiating transaction rollback)
+logging:
+  level:
+    org.springframework.jdbc.support.JdbcTransactionManager: debug
