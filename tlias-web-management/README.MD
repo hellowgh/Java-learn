@@ -6,6 +6,7 @@
 - CURD
 - 全局异常处理
 - 文件上传
+- 日志功能
 
 ## 技术栈
 - Spring boot
@@ -14,5 +15,7 @@
 - Interceptor
 - MySQL事务
 - JWT
+- AOP
+- 自定义注解
 
 [视频资料](https://www.bilibili.com/video/BV1m84y1w7Tb?p=140&spm_id_from=pageDriver&vd_source=d6cb596d0a42c992e747c4f524381afb)
