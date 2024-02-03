@@ -11,8 +11,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class TestAspect {
 
+    // 通过execution指定；
     // 完整的切入点表达式
-    @Pointcut("execution(public void com.itheima.service.impl.DeptServiceImpl.deleteById(java.lang.Integer))")
+    // @Pointcut("execution(public void com.itheima.service.impl.DeptServiceImpl.deleteById(java.lang.Integer))")
+
+    // 自定义注解方式
+    @Pointcut("@annotation(com.itheima.aop.MyLog)")
     private void pt() {}
 
     @Before("pt()")
