@@ -45,6 +45,9 @@ public class DeptServiceImpl implements DeptService  {
             // 无论事务回滚与否，都要添加操作日志
             DeptLog deptLog = new DeptLog();
             deptLog.setCreateTime(LocalDateTime.now());
+
+            // mistake mysql5版本默认用的字符集可能是latin1，需要改成utf8mb4
+            // ALTER TABLE dept_log CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
             deptLog.setDescription("执行了解散部门操作，此次解散的部门id是：" + id);
 
             deptLogService.insert(deptLog);
