@@ -3,9 +3,11 @@ package com.itheima.aop;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Slf4j
+@Order(1) // 指定执行顺序
 @Component
 @Aspect
 public class TimeAspect {
