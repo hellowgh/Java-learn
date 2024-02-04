@@ -1,5 +1,6 @@
 package com.itheima.controller;
 
+import com.itheima.anno.Log;
 import com.itheima.pojo.Emp;
 import com.itheima.pojo.PageBean;
 import com.itheima.pojo.Result;
@@ -44,6 +45,7 @@ public class EmpController {
     }
 
     @DeleteMapping("/{ids}")
+    @Log
     public Result remove(@PathVariable List<Integer> ids) {
         log.info("删除员工，id是：{}", ids);
 
@@ -53,6 +55,7 @@ public class EmpController {
     }
 
     @PostMapping
+    @Log
     public Result save(@RequestBody Emp emp) {
         log.info("新增员工，emp：{}", emp);
 
@@ -75,6 +78,7 @@ public class EmpController {
     }
 
     @PutMapping
+    @Log
     public Result update(@RequestBody Emp emp) {
         Integer id = emp.getId();
 
@@ -85,6 +89,11 @@ public class EmpController {
         return Result.success();
     }
 
+
+    /**
+     * 测试阿里云存储
+     * @return
+     */
     @GetMapping("/test")
     public Result test() {
         testComponent.test();
