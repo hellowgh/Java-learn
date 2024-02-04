@@ -1,16 +1,34 @@
 package com.itheima;
 
+import com.itheima.controller.DeptController;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-//@SpringBootTest
+@SpringBootTest
 class TliasWebManagementApplicationTests {
+	@Autowired
+	 private ApplicationContext applicationContext;
+
+	@Test
+	public void testGetBean() {
+		DeptController bean1 = (DeptController) applicationContext.getBean("deptController");
+		DeptController bean2 = applicationContext.getBean(DeptController.class);
+		DeptController bean3 = applicationContext.getBean("deptController", DeptController.class);
+
+		System.out.println("----------");
+		System.out.println(bean1);
+		System.out.println(bean2);
+		System.out.println(bean3);
+	}
 
 	@Test
 	void contextLoads() {
