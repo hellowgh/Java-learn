@@ -1,6 +1,5 @@
 package com.itheima.service.impl;
 
-import com.itheima.aop.MyLog;
 import com.itheima.mapper.DeptMapper;
 import com.itheima.mapper.EmpMapper;
 import com.itheima.pojo.Dept;
@@ -33,7 +32,6 @@ public class DeptServiceImpl implements DeptService  {
 
     @Transactional(rollbackFor = Exception.class) // 开启 spring 事务管理；所有异常都回滚（默认是运行时异常才回滚）
     @Override
-    @MyLog
     public void deleteById(Integer id) {
         try {
             deptMapper.deleteById(id);

@@ -30,10 +30,12 @@ public class LoginController {
         if (emp1 != null) {
             // 登录成功，返回jwt
             Map<String, Object> claims = new HashMap<>();
-            claims.put("id", "userId");
-            claims.put("username", "username");
+            claims.put("id", emp1.getId());
+            claims.put("username", emp1.getName());
 
             String jwt = JwtUtils.generateJwt(claims);
+
+            log.info("jwt is : {}", jwt);
 
             return Result.success(jwt);
         }

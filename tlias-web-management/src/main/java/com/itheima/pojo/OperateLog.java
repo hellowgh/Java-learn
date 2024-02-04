@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class OperateLog {
     private Integer id;
+    private Integer operateUser;
     private LocalDateTime operateTime;
     private String className;
     private String methodName;
