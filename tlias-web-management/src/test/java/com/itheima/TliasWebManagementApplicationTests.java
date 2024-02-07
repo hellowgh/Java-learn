@@ -18,6 +18,7 @@ class TliasWebManagementApplicationTests {
 	@Autowired
 	 private ApplicationContext applicationContext;
 
+
 	@Test
 	public void testGetBean() {
 		DeptController bean1 = (DeptController) applicationContext.getBean("deptController");
