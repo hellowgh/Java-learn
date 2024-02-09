@@ -1,4 +1,4 @@
-package cn.itheima.eureka;
+package cn.itcast.eureka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
