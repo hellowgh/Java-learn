@@ -24,6 +24,7 @@ logging:
   pattern:
     dateformat: MM-dd HH:mm:ss:SSS
 
+
 # eureka
 #eureka:
 #  client:
@@ -40,3 +41,8 @@ ribbon:
     enabled: true # 开启饥饿加载
     clients:
       - userservice
+feign:
+  client:
+    config:
+      default:
+        logger-level: basic # 日志级别
