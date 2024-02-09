@@ -11,7 +11,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * mistake 没有加 EnableFeignClients 注解，导致无法扫描 Feign 客户端
+ * mistake 没有加 EnableFeignClients 注解，导致无法扫描 Feign 客户端：因为Feign module就是不在 SpringBootApplication 的扫描范围之内
+ * 其中clients = UserClient.class就是指定要扫描的包
  */
 
 @MapperScan("cn.itcast.order.mapper")
