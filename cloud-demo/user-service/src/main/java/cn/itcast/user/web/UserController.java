@@ -25,8 +25,10 @@ public class UserController {
     @Autowired
     private PatternProperties patternProperties;
 
+
     @GetMapping("now")
     public String now() {
+        System.out.println(patternProperties.getEnvShareValue());
         return LocalDateTime.now().format(DateTimeFormatter.ofPattern(patternProperties.getDateformat(), Locale.CHINA));
     }
 
