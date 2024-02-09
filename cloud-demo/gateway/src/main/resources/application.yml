@@ -12,8 +12,12 @@ spring:
           uri: lb://userservice # 路由的目标地址
           predicates: # 路由断言，判断请求是否符合规则
             - Path=/user/** # 断言规则1：判断路径是否以 /user 开头，是则符合
+          filters:
+            - AddRequestHeader=X-Request-red, blue # 添加请求头
         - id: order-service
           uri: lb://orderservice
           predicates:
             - Path=/order/**
+      default-filters: # 所有微服务都生效
+        - AddResponseHeader=X-Response-Red, Blue
 
